@@ -1,0 +1,147 @@
+<html>
+<head>
+  
+    <title>Temperature Converter</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto|Pacifico' rel='stylesheet'>
+    <style>
+        body {
+            background-color: rgb(63, 61, 65);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .converter {
+            background-color: #1b8dd8;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: 'GFS Neohellenic', cursive;
+            margin-bottom: 20px;
+            font-size: 32px;
+            border-bottom: 2px solid #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-group label {
+            width: 70px;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+            margin-right: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.5;
+        }
+
+        .input-group select, .input-group input {
+            padding: 10px;
+            border-radius: 8px;
+            width: 14   0px;
+            font-size: 16px;
+            border: 2px solid #444;
+            color: black;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        #result {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            margin-top: 30px;
+            font-size: 18px;
+            color: black;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: 2px solid #388E3C;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 20px;
+            margin-top: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.5;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="converter">
+            <h1>Temperature Converter</h1>
+
+            <div class="input-group">
+                <label for="temp">Value:</label>
+                <input type="text" id="temp" class="textbox">
+            </div>
+
+            <div class="input-group">
+                <label for="tempid">Type:</label>
+                <select name="type" id="tempid">
+                    <option value="Celsius">Celsius</option>
+                    <option value="Fahrenheit">Fahrenheit</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="converttemp()">Convert</button>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function converttemp() {
+            var tempinput = parseFloat(document.getElementById("temp").value);
+            var typeinput = document.getElementById("tempid").value;
+            var newtemp;
+
+            if (isNaN(tempinput)) {
+                alert('Please enter a valid number.');
+                return;
+            }
+
+            if (typeinput == "Celsius") {
+                newtemp = (tempinput * 9 / 5) + 32;
+                document.getElementById("result").innerHTML = `${tempinput}°C is ${newtemp.toFixed(2)}°F`;
+            } else if (typeinput == "Fahrenheit") {
+                newtemp = (tempinput - 32) * 5 / 9;
+                document.getElementById("result").innerHTML = `${tempinput}°F is ${newtemp.toFixed(2)}°C`;
+            }
+        }
+    </script>
+</body>
+</html>
